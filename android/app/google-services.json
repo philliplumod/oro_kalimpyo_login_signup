@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "118555361730",
+    "project_id": "oro-kalimpyo",
+    "storage_bucket": "oro-kalimpyo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118555361730:android:06831558674e6aa568d65b",
+        "android_client_info": {
+          "package_name": "com.example.oro_kalimpyo_login_signup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "118555361730-97qds581vm1vsco5af0nnb15en2s2ccl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2ndL1YgY-RsXryVYlM5zDx4DCfchDf-M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "118555361730-97qds581vm1vsco5af0nnb15en2s2ccl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

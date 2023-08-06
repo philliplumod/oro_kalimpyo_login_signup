@@ -1,3 +1,6 @@
+// This code creates a new Flutter app with a single page that displays a
+// greeting.
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,7 +15,7 @@ class MainApp extends StatelessWidget {
     return const MaterialApp(
       home: Scaffold(
         body: Center(
-          child: Text('Hello World!'),
+          child: Text('Hello !'),
         ),
       ),
     );
