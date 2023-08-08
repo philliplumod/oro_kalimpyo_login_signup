@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:oro_kalimpyo_login_signup/presentation/widgets/signup_form.dart';
 import 'package:oro_kalimpyo_login_signup/styles/colors.dart';
 
 import '../widgets/login_form.dart';
@@ -14,6 +15,7 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   final _formKey = GlobalKey<FormState>();
   bool _showLoginForm = false;
+  bool _showLoginText = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,22 +34,33 @@ class _LandingPageState extends State<LandingPage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      LoginForm(
-                        formKey: _formKey,
-                      ),
+                      _showLoginForm
+                          ? LoginForm(formKey: _formKey)
+                          : SignupForm(formKey: _formKey),
                       const SizedBox(
                         height: 15,
                       ),
                       RichText(
                         text: TextSpan(
                           children: [
-                            const TextSpan(text: "Don't have an account?"),
                             TextSpan(
-                              text: ' Sign up',
-                              style: const TextStyle(color: Colors.blue),
+                              text: _showLoginText
+                                  ? 'Don\'t have an account?'
+                                  : 'Already have an account?',
+                            ),
+                            TextSpan(
+                              text: _showLoginText ? ' Signup' : ' Login',
+                              style: const TextStyle(
+                                color: Colors.blue,
+                              ),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
-                                  // Handle the tap on the "Sign up" text here
+                                  setState(() {
+                                    _showLoginForm = !_showLoginForm;
+                                    _showLoginText = !_showLoginText;
+                                  });
+
+                                  _formKey.currentState?.reset();
                                 },
                             ),
                           ],

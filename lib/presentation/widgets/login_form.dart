@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:oro_kalimpyo_login_signup/presentation/widgets/custom_button.dart';
+import 'package:oro_kalimpyo_login_signup/presentation/widgets/custom_textfield.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({super.key, required GlobalKey<FormState> formKey})
@@ -21,11 +22,20 @@ class LoginForm extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            TextFormField(
-              decoration: const InputDecoration(
-                hintText: 'Email',
-                border: OutlineInputBorder(),
-              ),
+            // TextFormField(
+            //   decoration: const InputDecoration(
+            //     hintText: 'Email',
+            //     border: OutlineInputBorder(),
+            //   ),
+            //   validator: (value) {
+            //     if (value!.isEmpty) {
+            //       return 'Please enter your email';
+            //     }
+            //     return null;
+            //   },
+            // ),
+            CustomTextField(
+              hintText: 'Email',
               validator: (value) {
                 if (value!.isEmpty) {
                   return 'Please enter your email';
@@ -33,15 +43,12 @@ class LoginForm extends StatelessWidget {
                 return null;
               },
             ),
+
             const SizedBox(
               height: 20,
             ),
-            TextFormField(
-              obscureText: true,
-              decoration: const InputDecoration(
-                hintText: 'Password',
-                border: OutlineInputBorder(),
-              ),
+            CustomTextField(
+              hintText: 'Password',
               validator: (value) {
                 if (value!.isEmpty) {
                   return 'Please enter your password';
