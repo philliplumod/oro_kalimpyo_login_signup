@@ -1,5 +1,8 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:oro_kalimpyo_login_signup/styles/colors.dart';
+
+import '../widgets/login_form.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -10,6 +13,7 @@ class LandingPage extends StatefulWidget {
 
 class _LandingPageState extends State<LandingPage> {
   final _formKey = GlobalKey<FormState>();
+  bool _showLoginForm = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,77 +27,34 @@ class _LandingPageState extends State<LandingPage> {
             ),
             Expanded(
               child: Center(
-                child: Container(
-                  padding: const EdgeInsets.all(8),
+                child: SizedBox(
                   width: 500,
-                  child: Form(
-                      key: _formKey,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text(
-                            'Login',
-                            style: TextStyle(
-                                fontSize: 30, fontWeight: FontWeight.bold),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          TextFormField(
-                            decoration: const InputDecoration(
-                              hintText: 'Email',
-                              border: OutlineInputBorder(),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      LoginForm(
+                        formKey: _formKey,
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            const TextSpan(text: "Don't have an account?"),
+                            TextSpan(
+                              text: ' Sign up',
+                              style: const TextStyle(color: Colors.blue),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  // Handle the tap on the "Sign up" text here
+                                },
                             ),
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return 'Please enter your email';
-                              }
-                              return null;
-                            },
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          TextFormField(
-                            obscureText: true,
-                            decoration: const InputDecoration(
-                              hintText: 'Password',
-                              border: OutlineInputBorder(),
-                            ),
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return 'Please enter your password';
-                              }
-                              return null;
-                            },
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          ElevatedButton(
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                        content: Text('Processing Data')));
-                              }
-                            },
-                            child: const Text('Login'),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Text('Don\'t have an account?'),
-                              TextButton(
-                                  onPressed: () {},
-                                  child: const Text('Sign up here'))
-                            ],
-                          )
-                        ],
-                      )),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
